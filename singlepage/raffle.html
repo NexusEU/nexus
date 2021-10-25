@@ -3,6 +3,7 @@
         <title>Raffle</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script>
             $(function() {
                 $('#contestants-template').hide();
@@ -14,8 +15,6 @@
                     var drawsRemaining = parseInt($('#numberofwinners').val());
                     if(!drawsRemaining) drawsRemaining=1;
                     var allowDupes = $('#duplicate').is(":checked");
-
-                    debugger;
 
                     $('#contestants .row').each(function(index){
                         var name = $(this).find('.name').val();
@@ -55,29 +54,48 @@
                 $('#contestants').append($('#contestants-template').clone().show().removeAttr('id'));
             }
         </script>
+        <style>
+            #main{ width: 95%; margin: 0 auto; max-width: 500px; }
+            #contestants { margin-top: 10px; margin-bottom: 10px; clear:both; }
+            .namecol{ width: 70%; }
+            .ticketcol{ width: 20%; }
+            .buttoncol{ width: 10%; }
+            .namecol, .ticketcol, .buttoncol { float: left; }
+            .row input, .row button { margin-bottom: 5px; }
+            #contestants input { width: 95%; margin-right: 5%; }
+        </style>
     </head>
     <body>
-        <h1>Raffle</h1>
-        <p>Number of winners: <input type="number" id="numberofwinners" name="quantity" min="1" max="5"></p>
-        <p>Allow duplicate winners: <input type="checkbox" id="duplicate" name="duplicate"></p>
-        <p>Enter contestants</p>
-        <div id="contestants">
-
-        </div>
-        
-        <p>
-            <div id="contestants-template" class="row">
-                Name: <input type="text" class="name"> 
-                Tickets: <input type="number" class="tickets" min="1" max="10000">
-                <button onclick="deleteContestant(this)">Remove</button>
+        <div id="main">
+            <h1>Raffle</h1>
+            <p>Number of winners: <input type="number" id="numberofwinners" name="quantity" min="1" max="5"></p>
+            <p>Allow duplicate winners: <input type="checkbox" id="duplicate" name="duplicate"></p>
+            <p>Enter contestants</p>
+            <div>
+                <div class="row">
+                    <div class="namecol">Name</div>
+                    <div class="ticketcol">Tickets</div>
+                    <div class="buttoncol">Del</div>
+                </div>
             </div>
-        </p>
+            <div id="contestants">
 
-        <p>
-            <button id="add">Add contestant</button>
-            <button id="draw">Draw</button>
-        </p>
+            </div>
+            
+            <p>
+                <div id="contestants-template" class="row">
+                    <div class="namecol"><input type="text" class="name"></div>
+                    <div class="ticketcol"><input type="number" class="tickets" min="1" max="10000"></div>
+                    <button class="buttoncol" onclick="deleteContestant(this)">X</button>
+                </div>
+            </p>
 
-        <p id="result"></p>
+            <p>
+                <button id="add">Add contestant</button>
+                <button id="draw">Draw</button>
+            </p>
+
+            <p id="result"></p>
+        </div>
     </body>
 </html>
