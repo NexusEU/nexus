@@ -31,10 +31,13 @@
                     })
 
                     while(drawsRemaining>0 && tickets.length>0){
-                        var winner = tickets[Math.floor(Math.random()*tickets.length)];
+                        var winnerIdx = Math.floor(Math.random()*tickets.length);
+                        var winner = tickets[winnerIdx];
                         winners.push(winner);
                         if(!allowDupes) {
                             tickets = tickets.filter(a => a !== winner)
+                        }else{
+                            tickets.splice(winnerIdx,1);
                         }
                         drawsRemaining--;
                     }
