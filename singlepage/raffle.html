@@ -44,7 +44,7 @@
 
                     $('#result').empty();
                     for(var i = 0; i < winners.length; i++) {
-                        $('#result').append( $('<p>').text('#'+(i+1).toString()+": "+winners[i]));
+                        $($('<p>').text('#'+(i+1).toString()+": "+winners[i])).hide().appendTo("#result").fadeIn(1000 * (i+1));
                     }
                     
                 })
