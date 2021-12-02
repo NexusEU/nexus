@@ -63,7 +63,7 @@
             #contestants { margin-top: 10px; margin-bottom: 10px; clear:both; }
             .namecol{ width: 70%; }
             .ticketcol{ width: 20%; }
-            .buttoncol{ width: 10%; }
+            .buttoncol{ width: 8%; padding-left: 2%; }
             .namecol, .ticketcol, .buttoncol { float: left; }
             .row input, .row button { margin-bottom: 5px; }
             #contestants input { width: 95%; margin-right: 5%; }
@@ -90,7 +90,7 @@
                 <div id="contestants-template" class="row">
                     <div class="namecol"><input type="text" class="name" /></div>
                     <div class="ticketcol"><input type="number" class="tickets" min="1" max="10000" /></div>
-                    <button class="buttoncol" onclick="deleteContestant(this)">X</button>
+                    <div class="buttoncol"><button  onclick="deleteContestant(this)">X</button></div>
                 </div>
             </p>
 
